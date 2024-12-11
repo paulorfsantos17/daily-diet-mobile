@@ -26,7 +26,9 @@ export default function RootLayout() {
     <GluestackUIProvider mode="light">
       <Stack>
         <Stack.Screen name="index" options={{ headerShown: false }} />
+        <Stack.Screen name="metrics" options={{ headerShown: false }} />
       </Stack>
+
       <StatusBar style="auto" />
     </GluestackUIProvider>
   )
