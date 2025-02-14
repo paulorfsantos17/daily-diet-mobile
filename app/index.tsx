@@ -87,9 +87,11 @@ export default function HomeScreen() {
           <ButtonIcon size="md">
             <Plus color={colors.white} size={16} />
           </ButtonIcon>
-          <ButtonText className="text-white font-bold">
-            Nova Refeição
-          </ButtonText>
+          <Link href="/new-meal">
+            <ButtonText className="text-white font-bold">
+              Nova Refeição
+            </ButtonText>
+          </Link>
         </Button>
         <VStack className="flex-1 rounded-lg">
           <SectionList

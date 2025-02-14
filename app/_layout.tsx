@@ -27,6 +27,7 @@ export default function RootLayout() {
       <Stack>
         <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name="metrics" options={{ headerShown: false }} />
+        <Stack.Screen name="new-meal" options={{ headerShown: false }} />
       </Stack>
 
       <StatusBar style="auto" />
