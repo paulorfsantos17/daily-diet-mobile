@@ -1,27 +1,27 @@
-'use client';
-import React from 'react';
-import { createButton } from '@gluestack-ui/button';
-import { tva } from '@gluestack-ui/nativewind-utils/tva';
+'use client'
+import React from 'react'
+import { createButton } from '@gluestack-ui/button'
+import { tva } from '@gluestack-ui/nativewind-utils/tva'
 import {
   withStyleContext,
   useStyleContext,
-} from '@gluestack-ui/nativewind-utils/withStyleContext';
-import { cssInterop } from 'nativewind';
-import { ActivityIndicator, Pressable, Text, View } from 'react-native';
-import type { VariantProps } from '@gluestack-ui/nativewind-utils';
-import { PrimitiveIcon, UIIcon } from '@gluestack-ui/icon';
+} from '@gluestack-ui/nativewind-utils/withStyleContext'
+import { cssInterop } from 'nativewind'
+import { ActivityIndicator, Pressable, Text, View } from 'react-native'
+import type { VariantProps } from '@gluestack-ui/nativewind-utils'
+import { PrimitiveIcon, UIIcon } from '@gluestack-ui/icon'
 
-const SCOPE = 'BUTTON';
+const SCOPE = 'BUTTON'
 
-const Root = withStyleContext(Pressable, SCOPE);
+const Root = withStyleContext(Pressable, SCOPE)
 
 const UIButton = createButton({
-  Root: Root,
+  Root,
   Text,
   Group: View,
   Spinner: ActivityIndicator,
   Icon: UIIcon,
-});
+})
 
 cssInterop(PrimitiveIcon, {
   className: {
@@ -34,16 +34,16 @@ cssInterop(PrimitiveIcon, {
       stroke: true,
     },
   },
-});
+})
 
 const buttonStyle = tva({
-  base: 'group/button rounded bg-primary-500 flex-row items-center justify-center data-[focus-visible=true]:web:outline-none data-[focus-visible=true]:web:ring-2 data-[disabled=true]:opacity-40 gap-2',
+  base: 'group/button rounded-md bg-primary-500 flex-row items-center justify-center data-[focus-visible=true]:web:outline-none data-[focus-visible=true]:web:ring-2 data-[disabled=true]:opacity-40 gap-2',
   variants: {
     action: {
       primary:
-        'bg-primary-500 data-[hover=true]:bg-primary-600 data-[active=true]:bg-primary-700 border-primary-300 data-[hover=true]:border-primary-400 data-[active=true]:border-primary-500 data-[focus-visible=true]:web:ring-indicator-info',
+        'bg-gray-800 data-[hover=true]:bg-gray-700 data-[active=true]:bg-gray-600  data-[focus-visible=true]:web:ring-indicator-info',
       secondary:
-        'bg-secondary-500 border-secondary-300 data-[hover=true]:bg-secondary-600 data-[hover=true]:border-secondary-400 data-[active=true]:bg-secondary-700 data-[active=true]:border-secondary-700 data-[focus-visible=true]:web:ring-indicator-info',
+        'bg-transparent border-gray-900 border data-[hover=true]:border-gray-800  data-[active=true]:border-gray-500 data-[focus-visible=true]:web:ring-indicator-info',
       positive:
         'bg-success-500 border-success-300 data-[hover=true]:bg-success-600 data-[hover=true]:border-success-400 data-[active=true]:bg-success-700 data-[active=true]:border-success-500 data-[focus-visible=true]:web:ring-indicator-info',
       negative:
@@ -61,7 +61,7 @@ const buttonStyle = tva({
     size: {
       xs: 'px-3.5 h-8',
       sm: 'px-4 h-9',
-      md: 'px-5 h-10',
+      md: 'px-4 py-4 h-[50px]',
       lg: 'px-6 h-11',
       xl: 'px-7 h-12',
     },
@@ -116,16 +116,16 @@ const buttonStyle = tva({
         'bg-transparent data-[hover=true]:bg-background-50 data-[active=true]:bg-transparent',
     },
   ],
-});
+})
 
 const buttonTextStyle = tva({
-  base: 'text-typography-0 font-semibold web:select-none',
+  base: 'font-semibold web:select-none',
   parentVariants: {
     action: {
       primary:
-        'text-primary-600 data-[hover=true]:text-primary-600 data-[active=true]:text-primary-700',
+        'text-white data-[hover=true]:text-white data-[active=true]:text-white',
       secondary:
-        'text-typography-500 data-[hover=true]:text-typography-600 data-[active=true]:text-typography-700',
+        'text-typography-500 text-gray-900 data-[hover=true]:text-typography-600 data-[active=true]:text-typography-700',
       positive:
         'text-success-600 data-[hover=true]:text-success-600 data-[active=true]:text-success-700',
       negative:
@@ -135,7 +135,7 @@ const buttonTextStyle = tva({
       link: 'data-[hover=true]:underline data-[active=true]:underline',
       outline: '',
       solid:
-        'text-typography-0 data-[hover=true]:text-typography-0 data-[active=true]:text-typography-0',
+        'data-[hover=true]:text-typography-0 data-[active=true]:text-typography-0',
     },
     size: {
       xs: 'text-xs',
@@ -150,7 +150,7 @@ const buttonTextStyle = tva({
       variant: 'solid',
       action: 'primary',
       class:
-        'text-typography-0 data-[hover=true]:text-typography-0 data-[active=true]:text-typography-0',
+        'data-[hover=true]:text-typography-0 data-[active=true]:text-typography-0',
     },
     {
       variant: 'solid',
@@ -195,7 +195,7 @@ const buttonTextStyle = tva({
         'text-primary-500 data-[hover=true]:text-primary-500 data-[active=true]:text-primary-500',
     },
   ],
-});
+})
 
 const buttonIconStyle = tva({
   base: 'fill-none',
@@ -251,17 +251,17 @@ const buttonIconStyle = tva({
         'text-typography-0 data-[hover=true]:text-typography-0 data-[active=true]:text-typography-0',
     },
   ],
-});
+})
 
 const buttonGroupStyle = tva({
   base: '',
   variants: {
     space: {
-      'xs': 'gap-1',
-      'sm': 'gap-2',
-      'md': 'gap-3',
-      'lg': 'gap-4',
-      'xl': 'gap-5',
+      xs: 'gap-1',
+      sm: 'gap-2',
+      md: 'gap-3',
+      lg: 'gap-4',
+      xl: 'gap-5',
       '2xl': 'gap-6',
       '3xl': 'gap-7',
       '4xl': 'gap-8',
@@ -270,19 +270,19 @@ const buttonGroupStyle = tva({
       true: 'gap-0',
     },
     flexDirection: {
-      'row': 'flex-row',
-      'column': 'flex-col',
+      row: 'flex-row',
+      column: 'flex-col',
       'row-reverse': 'flex-row-reverse',
       'column-reverse': 'flex-col-reverse',
     },
   },
-});
+})
 
 type IButtonProps = Omit<
   React.ComponentPropsWithoutRef<typeof UIButton>,
   'context'
 > &
-  VariantProps<typeof buttonStyle> & { className?: string };
+  VariantProps<typeof buttonStyle> & { className?: string }
 
 const Button = React.forwardRef<
   React.ElementRef<typeof UIButton>,
@@ -290,7 +290,7 @@ const Button = React.forwardRef<
 >(
   (
     { className, variant = 'solid', size = 'md', action = 'primary', ...props },
-    ref
+    ref,
   ) => {
     return (
       <UIButton
@@ -299,12 +299,12 @@ const Button = React.forwardRef<
         className={buttonStyle({ variant, size, action, class: className })}
         context={{ variant, size, action }}
       />
-    );
-  }
-);
+    )
+  },
+)
 
 type IButtonTextProps = React.ComponentPropsWithoutRef<typeof UIButton.Text> &
-  VariantProps<typeof buttonTextStyle> & { className?: string };
+  VariantProps<typeof buttonTextStyle> & { className?: string }
 
 const ButtonText = React.forwardRef<
   React.ElementRef<typeof UIButton.Text>,
@@ -314,7 +314,7 @@ const ButtonText = React.forwardRef<
     variant: parentVariant,
     size: parentSize,
     action: parentAction,
-  } = useStyleContext(SCOPE);
+  } = useStyleContext(SCOPE)
 
   return (
     <UIButton.Text
@@ -332,18 +332,18 @@ const ButtonText = React.forwardRef<
         class: className,
       })}
     />
-  );
-});
+  )
+})
 
-const ButtonSpinner = UIButton.Spinner;
+const ButtonSpinner = UIButton.Spinner
 
 type IButtonIcon = React.ComponentPropsWithoutRef<typeof UIButton.Icon> &
   VariantProps<typeof buttonIconStyle> & {
-    className?: string | undefined;
-    as?: React.ElementType;
-    height?: number;
-    width?: number;
-  };
+    className?: string | undefined
+    as?: React.ElementType
+    height?: number
+    width?: number
+  }
 
 const ButtonIcon = React.forwardRef<
   React.ElementRef<typeof UIButton.Icon>,
@@ -353,7 +353,7 @@ const ButtonIcon = React.forwardRef<
     variant: parentVariant,
     size: parentSize,
     action: parentAction,
-  } = useStyleContext(SCOPE);
+  } = useStyleContext(SCOPE)
 
   if (typeof size === 'number') {
     return (
@@ -363,7 +363,7 @@ const ButtonIcon = React.forwardRef<
         className={buttonIconStyle({ class: className })}
         size={size}
       />
-    );
+    )
   } else if (
     (props.height !== undefined || props.width !== undefined) &&
     size === undefined
@@ -374,7 +374,7 @@ const ButtonIcon = React.forwardRef<
         {...props}
         className={buttonIconStyle({ class: className })}
       />
-    );
+    )
   }
   return (
     <UIButton.Icon
@@ -390,11 +390,11 @@ const ButtonIcon = React.forwardRef<
       })}
       ref={ref}
     />
-  );
-});
+  )
+})
 
 type IButtonGroupProps = React.ComponentPropsWithoutRef<typeof UIButton.Group> &
-  VariantProps<typeof buttonGroupStyle>;
+  VariantProps<typeof buttonGroupStyle>
 
 const ButtonGroup = React.forwardRef<
   React.ElementRef<typeof UIButton.Group>,
@@ -408,7 +408,7 @@ const ButtonGroup = React.forwardRef<
       flexDirection = 'column',
       ...props
     },
-    ref
+    ref,
   ) => {
     return (
       <UIButton.Group
@@ -421,14 +421,14 @@ const ButtonGroup = React.forwardRef<
         {...props}
         ref={ref}
       />
-    );
-  }
-);
+    )
+  },
+)
 
-Button.displayName = 'Button';
-ButtonText.displayName = 'ButtonText';
-ButtonSpinner.displayName = 'ButtonSpinner';
-ButtonIcon.displayName = 'ButtonIcon';
-ButtonGroup.displayName = 'ButtonGroup';
+Button.displayName = 'Button'
+ButtonText.displayName = 'ButtonText'
+ButtonSpinner.displayName = 'ButtonSpinner'
+ButtonIcon.displayName = 'ButtonIcon'
+ButtonGroup.displayName = 'ButtonGroup'
 
-export { Button, ButtonText, ButtonSpinner, ButtonIcon, ButtonGroup };
+export { Button, ButtonText, ButtonSpinner, ButtonIcon, ButtonGroup }

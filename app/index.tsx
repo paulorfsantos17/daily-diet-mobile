@@ -12,7 +12,7 @@ import { ArrowUpRight, Plus } from 'phosphor-react-native'
 import { Text, View, SectionList } from 'react-native'
 import { colors } from '@/theme/colors'
 import { Heading } from '@/components/ui/heading'
-import { Button, ButtonIcon, ButtonText } from '@/components/ui/button'
+import { Button, ButtonText } from '@/components/ui/button'
 import { CardMeal } from '@/components/card-meal'
 import { LinearGradient } from 'expo-linear-gradient'
 import { Link } from 'expo-router'
@@ -83,10 +83,8 @@ export default function HomeScreen() {
 
       <VStack className="gap-4 mx-6 flex-1">
         <Text className="text-lg text-gray-900">Refeições</Text>
-        <Button size="md">
-          <ButtonIcon size="md">
-            <Plus color={colors.white} size={16} />
-          </ButtonIcon>
+        <Button size="md" className="bg-gray-800">
+          <Plus color={colors.white} size={16} />
           <Link href="/new-meal">
             <ButtonText className="text-white font-bold">
               Nova Refeição
@@ -98,7 +96,11 @@ export default function HomeScreen() {
             sections={DATA_MEAL}
             keyExtractor={(item, index) => item.title + index}
             renderItem={() => {
-              return <CardMeal />
+              return (
+                <Link href="/meal">
+                  <CardMeal />
+                </Link>
+              )
             }}
             renderSectionHeader={({ section: { title } }) => (
               <Text className="text-lg text-gray-900 font-bold mt-4 mb-2">
