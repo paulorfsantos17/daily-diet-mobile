@@ -59,9 +59,11 @@ export default function NewMeal() {
           </Button>
         </HStack>
         <VStack className="flex-1 justify-end">
-          <Button variant="solid" className="bg-gray-800 ">
-            <ButtonText className="text-white">Cadastrar Refeição</ButtonText>
-          </Button>
+          <Link href="/success-meal" asChild>
+            <Button>
+              <ButtonText className="text-white">Cadastrar Refeição</ButtonText>
+            </Button>
+          </Link>
         </VStack>
       </VStack>
     </VStack>
