@@ -9,13 +9,14 @@ import {
 } from '@/components/ui/avatar'
 import { Box } from '@/components/ui/box'
 import { ArrowUpRight, Plus } from 'phosphor-react-native'
-import { Text, View, SectionList } from 'react-native'
+import { View, SectionList } from 'react-native'
 import { colors } from '@/theme/colors'
 import { Heading } from '@/components/ui/heading'
 import { Button, ButtonText } from '@/components/ui/button'
 import { CardMeal } from '@/components/card-meal'
 import { LinearGradient } from 'expo-linear-gradient'
 import { Link } from 'expo-router'
+import { Text } from '@/components/ui/text'
 
 const DATA_MEAL = [
   {

@@ -1,6 +1,6 @@
 import { Heading } from '@/components/ui/heading'
 import { Text } from '@/components/ui/text'
-import SuccessMealImage from '../assets/svgs/success-meal.svg'
+import SuccessMealImage from '@/assets/svgs/success-meal.svg'
 import { View } from 'react-native'
 import { Button, ButtonText } from '@/components/ui/button'
 import { Link } from 'expo-router'

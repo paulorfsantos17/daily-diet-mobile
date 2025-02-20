@@ -24,8 +24,13 @@ export default function RootLayout() {
 
   return (
     <GluestackUIProvider mode="light">
-      <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+      <Stack>
+        <Stack.Screen name="index" options={{ headerShown: false }} />
+        <Stack.Screen name="metrics" options={{ headerShown: false }} />
+        <Stack.Screen name="new-meal" options={{ headerShown: false }} />
+        <Stack.Screen name="meal" options={{ headerShown: false }} />
+        <Stack.Screen name="edit-meal" options={{ headerShown: false }} />
+        <Stack.Screen name="success-meal" options={{ headerShown: false }} />
       </Stack>
 
       <StatusBar style="auto" />
