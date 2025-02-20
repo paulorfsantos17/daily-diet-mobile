@@ -83,14 +83,12 @@ export default function HomeScreen() {
 
       <VStack className="gap-4 mx-6 flex-1">
         <Text className="text-lg text-gray-900">Refeições</Text>
-        <Button size="md" className="bg-gray-800">
-          <Plus color={colors.white} size={16} />
-          <Link href="/new-meal">
-            <ButtonText className="text-white font-bold">
-              Nova Refeição
-            </ButtonText>
-          </Link>
-        </Button>
+        <Link href="/new-meal" asChild>
+          <Button size="md" className=" w-full">
+            <Plus color={colors.white} size={16} />
+            <ButtonText>Nova Refeição</ButtonText>
+          </Button>
+        </Link>
         <VStack className="flex-1 rounded-lg">
           <SectionList
             sections={DATA_MEAL}
