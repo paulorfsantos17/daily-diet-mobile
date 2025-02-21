@@ -107,7 +107,7 @@ export default function HomeScreen() {
               </Text>
             )}
           />
-        </VStack>{' '}
+        </VStack>
         <LinearGradient
           colors={['#FAFAFA00', colors.white]}
           className="absolute bottom-0 left-0 right-0 h-20 z-10"

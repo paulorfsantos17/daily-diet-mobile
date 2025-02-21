@@ -14,7 +14,7 @@ export default function NewMeal() {
   return (
     <VStack className="flex-1 bg-gray-300 gap-8">
       <HStack className="mt-20 mx-6">
-        <Link href="/">
+        <Link href="/(private)/home">
           <ArrowLeft size={24} color={colors.gray[800]} />
         </Link>
         <Heading className="text-lg  flex-1 text-center">Nova refeição</Heading>

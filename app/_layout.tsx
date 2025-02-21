@@ -25,7 +25,7 @@ export default function RootLayout() {
   return (
     <GluestackUIProvider mode="light">
       <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+        <Stack.Screen name="(auth)" />
       </Stack>
 
       <StatusBar style="auto" />

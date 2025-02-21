@@ -11,7 +11,7 @@ export default function Metrics() {
   return (
     <Box className="bg-red-light flex-1 pt-14 gap-8">
       <VStack className="mx-6">
-        <Link href="/">
+        <Link href="/(private)/home">
           <ArrowLeft size={24} color={colors.red.dark} />
         </Link>
         <Heading className="text-[2rem] text-center">30,21%</Heading>

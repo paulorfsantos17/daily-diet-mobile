@@ -1,23 +1,23 @@
 import { Heading } from '@/components/ui/heading'
 import { Text } from '@/components/ui/text'
-import FailMealImage from '@/assets/svgs/fail-meal.svg'
+import SuccessMealImage from '@/assets/svgs/success-meal.svg'
 import { View } from 'react-native'
 import { Button, ButtonText } from '@/components/ui/button'
 import { Link } from 'expo-router'
 
-export default function FailMeal() {
+export default function SuccessMeal() {
   return (
     <View className="items-center justify-center h-full gap-6 bg-gray-200">
-      <Heading size="2xl" className="text-red-dark">
-        Que pena!
+      <Heading size="2xl" className="text-green-dark">
+        Continue Assim!
       </Heading>
 
       <Text>
-        Você <Text className="font-bold">saiu da dieta</Text> dessa vez, mas
-        continue se esforçando e não desista!
+        Você continua <Text className="font-bold">dentro da dieta</Text>. Muito
+        bem!
       </Text>
-      <FailMealImage />
-      <Link href="/" asChild>
+      <SuccessMealImage />
+      <Link href="/(private)/home" asChild>
         <Button>
           <ButtonText>Ir para a página inicial</ButtonText>
         </Button>

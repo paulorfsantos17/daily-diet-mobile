@@ -26,7 +26,7 @@ export default function Meal() {
       </AlertContent>
       <VStack className="flex-1 bg-green-light gap-8">
         <HStack className="mt-20 mx-6">
-          <Link href="/">
+          <Link href="/(home)">
             <ArrowLeft size={24} color={colors.gray[800]} />
           </Link>
           <Heading className="text-lg  flex-1 text-center">Refeição</Heading>
