@@ -1,20 +1,22 @@
 import { storageAuthTokenGet } from '@/storage/storageAuthToken'
 import { Stack, useRouter } from 'expo-router'
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 
 export default function PrivateLayout() {
   const router = useRouter()
-  async function checkLogin() {
+
+  const checkLogin = useCallback(async () => {
     const token = await storageAuthTokenGet()
 
     if (!token) {
       router.push('/(auth)')
     }
-  }
+  }, [router])
 
   useEffect(() => {
     checkLogin()
-  }, [])
+  }, [checkLogin])
+
   return (
     <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen name="home" />

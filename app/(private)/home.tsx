@@ -17,43 +17,41 @@ import { CardMeal } from '@/components/card-meal'
 import { LinearGradient } from 'expo-linear-gradient'
 import { Link } from 'expo-router'
 import { Text } from '@/components/ui/text'
+import { fetchMeals } from '@/http/fetch-meals'
+import { useCallback, useEffect, useState } from 'react'
+import type { MealDTO } from '@/dto/mealDTO'
 
-const DATA_MEAL = [
-  {
-    title: '12.02.22',
-    data: [
-      { title: 'X-TUDO', hour: '20:00', isDiet: false },
-      { title: 'Salada', hour: '20:00', isDiet: true },
-      { title: 'X-TUDO', hour: '20:00', isDiet: false },
-    ],
-  },
-  {
-    title: '11.02.22',
-    data: [
-      { title: 'X-TUDO', hour: '20:00', isDiet: false },
-      { title: 'Almoco', hour: '20:00', isDiet: true },
-      { title: 'X-TUDO', hour: '20:00', isDiet: false },
-    ],
-  },
-  {
-    title: '11.02.22',
-    data: [
-      { title: 'X-TUDO', hour: '20:00', isDiet: false },
-      { title: 'Almoco', hour: '20:00', isDiet: true },
-      { title: 'X-TUDO', hour: '20:00', isDiet: false },
-    ],
-  },
-  {
-    title: '11.02.22',
-    data: [
-      { title: 'X-TUDO', hour: '20:00', isDiet: false },
-      { title: 'Almoco', hour: '20:00', isDiet: true },
-      { title: 'X-TUDO', hour: '20:00', isDiet: false },
-    ],
-  },
-]
+type MealReducer = {
+  title: string
+  data: Array<MealDTO>
+}[]
 
 export default function HomeScreen() {
+  const [meals, setMeals] = useState<MealReducer>([])
+
+  const fetchMealsData = useCallback(async () => {
+    const meals = await fetchMeals()
+    setMeals(groupMealsByDate(meals))
+  }, [])
+
+  function groupMealsByDate(meals: MealDTO[]): MealReducer {
+    return meals.reduce<MealReducer>((acc, meal) => {
+      const existingGroup = acc.find((group) => group.title === meal.date)
+
+      if (existingGroup) {
+        existingGroup.data.push(meal)
+      } else {
+        acc.push({ title: meal.date, data: [meal] })
+      }
+
+      return acc
+    }, [])
+  }
+
+  useEffect(() => {
+    fetchMealsData()
+  }, [fetchMealsData])
+
   return (
     <VStack space="4xl" className="m-6 mt-16 flex-1">
       <HStack className="justify-between">
@@ -92,12 +90,13 @@ export default function HomeScreen() {
         </Link>
         <VStack className="flex-1 rounded-lg">
           <SectionList
-            sections={DATA_MEAL}
-            keyExtractor={(item, index) => item.title + index}
-            renderItem={() => {
+            sections={meals}
+            keyExtractor={(item, index) => item.date + index}
+            renderItem={(item) => {
+              console.log('🚀 ~ HomeScreen ~ item:', item)
               return (
                 <Link href="/meal">
-                  <CardMeal />
+                  <CardMeal hour={item.item.hours} title={item.item.name} />
                 </Link>
               )
             }}
