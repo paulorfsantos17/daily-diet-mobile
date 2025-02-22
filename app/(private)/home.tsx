@@ -20,6 +20,8 @@ import { Text } from '@/components/ui/text'
 import { fetchMeals } from '@/http/fetch-meals'
 import { useCallback, useEffect, useState } from 'react'
 import type { MealDTO } from '@/dto/mealDTO'
+import { getMetrics } from '@/http/get-metrics'
+import type { MetricsDTO } from '@/dto/metricsDTO'
 
 type MealReducer = {
   title: string
@@ -28,6 +30,7 @@ type MealReducer = {
 
 export default function HomeScreen() {
   const [meals, setMeals] = useState<MealReducer>([])
+  const [metrics, setMetrics] = useState<MetricsDTO>({} as MetricsDTO)
 
   const fetchMealsData = useCallback(async () => {
     const meals = await fetchMeals()
@@ -48,9 +51,15 @@ export default function HomeScreen() {
     }, [])
   }
 
+  const fetchMetricsData = useCallback(async () => {
+    const metrics = await getMetrics()
+    setMetrics(metrics)
+  }, [])
+
   useEffect(() => {
     fetchMealsData()
-  }, [fetchMealsData])
+    fetchMetricsData()
+  }, [fetchMealsData, fetchMetricsData])
 
   return (
     <VStack space="4xl" className="m-6 mt-16 flex-1">
@@ -73,7 +82,9 @@ export default function HomeScreen() {
               style={{ width: 24, height: 24 }}
             />
           </View>
-          <Heading className="text-3xl text-gray-900">90,86%</Heading>
+          <Heading className="text-3xl text-gray-900">
+            {metrics.percentageMealsWithinDiet}%
+          </Heading>
           <Text className="text-sm text-gray-800">
             das refeições dentro da dieta
           </Text>
