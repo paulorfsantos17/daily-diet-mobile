@@ -1,9 +1,8 @@
 export interface MealDTO {
   date: string
-  hours: string
+  hour: string
   description: string
-  id: string
+  id?: string
   isOnDiet: boolean
   name: string
-  userId: string
 }

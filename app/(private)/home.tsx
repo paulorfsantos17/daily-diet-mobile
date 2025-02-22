@@ -93,10 +93,9 @@ export default function HomeScreen() {
             sections={meals}
             keyExtractor={(item, index) => item.date + index}
             renderItem={(item) => {
-              console.log('🚀 ~ HomeScreen ~ item:', item)
               return (
                 <Link href="/meal">
-                  <CardMeal hour={item.item.hours} title={item.item.name} />
+                  <CardMeal hour={item.item.hour} title={item.item.name} />
                 </Link>
               )
             }}
