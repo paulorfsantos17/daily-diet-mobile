@@ -18,10 +18,11 @@ import { LinearGradient } from 'expo-linear-gradient'
 import { Link } from 'expo-router'
 import { Text } from '@/components/ui/text'
 import { fetchMeals } from '@/http/fetch-meals'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
 import type { MealDTO } from '@/dto/mealDTO'
 import { getMetrics } from '@/http/get-metrics'
 import type { MetricsDTO } from '@/dto/metricsDTO'
+import { useFocusEffect } from '@react-navigation/native'
 
 type MealReducer = {
   title: string
@@ -31,6 +32,9 @@ type MealReducer = {
 export default function HomeScreen() {
   const [meals, setMeals] = useState<MealReducer>([])
   const [metrics, setMetrics] = useState<MetricsDTO>({} as MetricsDTO)
+  const [loading, setLoading] = useState(true)
+
+  const isBestPercentual = metrics.percentageMealsWithinDiet >= 50
 
   const fetchMealsData = useCallback(async () => {
     const meals = await fetchMeals()
@@ -56,10 +60,16 @@ export default function HomeScreen() {
     setMetrics(metrics)
   }, [])
 
-  useEffect(() => {
+  useFocusEffect(() => {
+    setLoading(true)
     fetchMealsData()
     fetchMetricsData()
-  }, [fetchMealsData, fetchMetricsData])
+    setLoading(false)
+  })
+
+  if (loading) {
+    return null
+  }
 
   return (
     <VStack space="4xl" className="m-6 mt-16 flex-1">
@@ -75,15 +85,23 @@ export default function HomeScreen() {
         </Avatar>
       </HStack>
       <Link href="/metrics">
-        <Box className="rounded-lg w-full bg-green-light items-center justify-center p-3 pb-6">
+        <Box
+          className={
+            'rounded-lg w-full items-center justify-center p-3 pb-6' +
+            (isBestPercentual ? ' bg-green-light' : ' bg-red-light')
+          }
+        >
           <View className="self-end">
             <ArrowUpRight
-              color={colors.green.dark}
+              color={isBestPercentual ? colors.green.dark : colors.red.dark}
               style={{ width: 24, height: 24 }}
             />
           </View>
           <Heading className="text-3xl text-gray-900">
-            {metrics.percentageMealsWithinDiet}%
+            {metrics.percentageMealsWithinDiet
+              ? metrics.percentageMealsWithinDiet.toFixed(2)
+              : 0}
+            %
           </Heading>
           <Text className="text-sm text-gray-800">
             das refeições dentro da dieta
@@ -105,7 +123,12 @@ export default function HomeScreen() {
             keyExtractor={(item, index) => item.date + index}
             renderItem={(item) => {
               return (
-                <Link href="/meal">
+                <Link
+                  href={{
+                    pathname: '/(private)/(meal)/[id]',
+                    params: { id: item.item.id as string },
+                  }}
+                >
                   <CardMeal hour={item.item.hour} title={item.item.name} />
                 </Link>
               )

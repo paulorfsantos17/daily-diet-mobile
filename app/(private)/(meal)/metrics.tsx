@@ -3,18 +3,46 @@ import { Heading } from '@/components/ui/heading'
 import { HStack } from '@/components/ui/hstack'
 import { Text } from '@/components/ui/text'
 import { VStack } from '@/components/ui/vstack'
+import type { MetricsDTO } from '@/dto/metricsDTO'
+import { getMetrics } from '@/http/get-metrics'
 import { colors } from '@/theme/colors'
 import { Link } from 'expo-router'
 import { ArrowLeft } from 'phosphor-react-native'
+import { useCallback, useEffect, useState } from 'react'
 
 export default function Metrics() {
+  const [metrics, setMetrics] = useState<MetricsDTO>({} as MetricsDTO)
+  const isBestPercentual = metrics.percentageMealsWithinDiet >= 50
+
+  const fetchMetricsData = useCallback(async () => {
+    const metrics = await getMetrics()
+    setMetrics(metrics)
+  }, [])
+
+  useEffect(() => {
+    fetchMetricsData()
+  }, [fetchMetricsData])
+
   return (
-    <Box className="bg-red-light flex-1 pt-14 gap-8">
+    <Box
+      className={
+        'flex-1 pt-14 gap-8' +
+        (isBestPercentual ? ' bg-green-light' : ' bg-red-light')
+      }
+    >
       <VStack className="mx-6">
         <Link href="/(private)/home">
-          <ArrowLeft size={24} color={colors.red.dark} />
+          <ArrowLeft
+            size={24}
+            color={isBestPercentual ? colors.green.dark : colors.red.dark}
+          />
         </Link>
-        <Heading className="text-[2rem] text-center">30,21%</Heading>
+        <Heading className="text-[2rem] text-center">
+          {metrics.percentageMealsWithinDiet
+            ? metrics.percentageMealsWithinDiet.toFixed(2)
+            : 0}
+          %
+        </Heading>
         <Text className="text-center text-sm mt-1">
           das refeições dentro da dieta
         </Text>
@@ -28,7 +56,7 @@ export default function Metrics() {
         <VStack className="gap-4 ">
           <Box className="bg-gray-200 p-4 rounded-lg gap-5">
             <Text className="text-2xl text-gray-900 font-bold text-center">
-              4
+              {metrics.bestDietSequence}
             </Text>
             <Text className="text-gray-800 text-center">
               melhor sequência de pratos dentro da dieta
@@ -37,7 +65,7 @@ export default function Metrics() {
 
           <Box className="bg-gray-200 p-4 rounded-lg gap-5 ">
             <Text className="text-2xl text-gray-900 font-bold text-center">
-              4
+              {metrics.totalMeals}
             </Text>
             <Text className="text-gray-800 text-center">
               refeições registradas
@@ -47,7 +75,7 @@ export default function Metrics() {
           <HStack className="gap-4 mr-4">
             <Box className="bg-green-light p-4 rounded-lg gap-5 w-1/2">
               <Text className="text-2xl text-gray-900 font-bold text-center">
-                4
+                {metrics.mealsWithinDiet}
               </Text>
               <Text className="text-gray-800 text-center">
                 refeições dentro da dieta
@@ -56,7 +84,7 @@ export default function Metrics() {
 
             <Box className="bg-red-light p-4 rounded-lg gap-5 w-1/2">
               <Text className="text-2xl text-gray-900 font-bold text-center">
-                4
+                {metrics.mealsOutOfDiet}
               </Text>
               <Text className="text-gray-800 text-center">
                 refeições fora da dieta

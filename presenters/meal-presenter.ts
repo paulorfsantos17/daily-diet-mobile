@@ -16,7 +16,7 @@ export function transformMealHttpToDTO(meal: MealHttpRequest): MealDTO {
     description: meal.description,
     isOnDiet: meal.isDiet,
     hour: dayjs(meal.date).format('HH:mm'),
-    date: dayjs(meal.date).format('DD:MM:YY'),
+    date: dayjs(meal.date).format('DD/MM/YY'),
   }
 }
 
@@ -28,7 +28,6 @@ export function transformMealDTOToHttp(meal: MealDTO): MealHttpRequest {
     day,
     ...meal.hour.split(':').map(Number),
   )
-  console.log('🚀 ~ transformMealDTOToHttp ~ date:', date)
 
   return {
     date,
