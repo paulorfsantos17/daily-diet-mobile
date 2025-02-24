@@ -5,16 +5,17 @@ interface MealHttpRequest {
   date: Date
   description: string
   id: string
-  isDiet: boolean
+  isOnDiet: boolean
   name: string
   userId?: string
 }
 export function transformMealHttpToDTO(meal: MealHttpRequest): MealDTO {
+  console.log(meal)
   return {
     id: meal.id,
     name: meal.name,
     description: meal.description,
-    isOnDiet: meal.isDiet,
+    isOnDiet: meal.isOnDiet,
     hour: dayjs(meal.date).format('HH:mm'),
     date: dayjs(meal.date).format('DD/MM/YY'),
   }
@@ -33,7 +34,7 @@ export function transformMealDTOToHttp(meal: MealDTO): MealHttpRequest {
     date,
     description: meal.description,
     id: meal.id || '',
-    isDiet: meal.isOnDiet,
+    isOnDiet: meal.isOnDiet,
     name: meal.name,
   }
 }

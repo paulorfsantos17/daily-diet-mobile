@@ -98,7 +98,10 @@ export default function Meal() {
           </HStack>
 
           <VStack className="flex-1 justify-end gap-2">
-            <Link href="/edit-meal" asChild>
+            <Link
+              href={{ pathname: '/(private)/(meal)/edit-meal', params: { id } }}
+              asChild
+            >
               <Button>
                 <ButtonText>Editar refeição</ButtonText>
               </Button>

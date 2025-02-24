@@ -12,8 +12,9 @@ export default function SuccessMeal() {
         Continue Assim!
       </Heading>
 
-      <Text>
-        Você continua <Text className="font-bold">dentro da dieta</Text>. Muito
+      <Text className="text-center">
+        Você continua{' '}
+        <Text className="font-bold text-center">dentro da dieta</Text>. Muito
         bem!
       </Text>
       <SuccessMealImage />

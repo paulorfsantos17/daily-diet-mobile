@@ -60,12 +60,14 @@ export default function HomeScreen() {
     setMetrics(metrics)
   }, [])
 
-  useFocusEffect(() => {
-    setLoading(true)
-    fetchMealsData()
-    fetchMetricsData()
-    setLoading(false)
-  })
+  useFocusEffect(
+    useCallback(() => {
+      setLoading(true)
+      fetchMealsData()
+      fetchMetricsData()
+      setLoading(false)
+    }, [fetchMealsData, fetchMetricsData]),
+  )
 
   if (loading) {
     return null
@@ -129,7 +131,11 @@ export default function HomeScreen() {
                     params: { id: item.item.id as string },
                   }}
                 >
-                  <CardMeal hour={item.item.hour} title={item.item.name} />
+                  <CardMeal
+                    hour={item.item.hour}
+                    title={item.item.name}
+                    isOnDiet={item.item.isOnDiet}
+                  />
                 </Link>
               )
             }}
