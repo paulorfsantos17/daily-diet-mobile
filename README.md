@@ -27,11 +27,13 @@ cd daily-diet-mobile
 
 # Instale as dependências
 npm install
+```
+
 📱 Executar no celular:
-bash
-Copiar código
+```bash
 # Inicie o servidor de desenvolvimento
 npx expo start
+```
 É necessário ter o app Expo Go instalado no celular ou usar um emulador Android/iOS.
 
 📸 Prints
