@@ -14,7 +14,6 @@ Aplicativo mobile para controle de refeições diárias, permitindo ao usuário 
 - **AsyncStorage**
 - **Axios**
 - **Day.js** (manipulação de datas)
-- **Jest + Jest-Expo** (testes)
 - **ESLint + Prettier** (padronização de código)
 
 ## 📦 Como instalar e rodar
