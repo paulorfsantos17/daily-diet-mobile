@@ -4,13 +4,18 @@ Aplicativo mobile para controle de refeições diárias, permitindo ao usuário 
 
 ## 🚀 Tecnologias utilizadas
 
-- **React Native**
+- **React Native** com **Expo**
 - **TypeScript**
-- **React Navigation**
-- **AsyncStorage** (persistência local)
-- **Styled-Components** (estilização)
-- **React Hook Form** + **Zod** (validação de formulários)
+- **Expo Router**
+- **Tailwind CSS com NativeWind**
+- **Gluestack UI** (componentes acessíveis e personalizáveis)
+- **React Hook Form + Zod** (validação de formulários)
 - **Phosphor Icons**
+- **AsyncStorage**
+- **Axios**
+- **Day.js** (manipulação de datas)
+- **Jest + Jest-Expo** (testes)
+- **ESLint + Prettier** (padronização de código)
 
 ## 📦 Como instalar e rodar
 
@@ -18,31 +23,36 @@ Aplicativo mobile para controle de refeições diárias, permitindo ao usuário 
 # Clone o repositório
 git clone https://github.com/paulorfsantos17/daily-diet-mobile.git
 
-# Acesse o diretório
+# Acesse a pasta
 cd daily-diet-mobile
 
 # Instale as dependências
 npm install
-Para rodar no Expo:
+📱 Executar no celular:
 bash
 Copiar código
+# Inicie o servidor de desenvolvimento
 npx expo start
-Certifique-se de ter o Expo Go instalado no celular ou um emulador Android/iOS configurado.
+É necessário ter o app Expo Go instalado no celular ou usar um emulador Android/iOS.
 
 📸 Prints
-📌 Adicione aqui prints do app em funcionamento (se tiver).
+📌 Adicione aqui imagens ou GIFs do app funcionando.
 
 📌 Status
-✅ Projeto concluído
+✅ Concluído (pode receber melhorias futuras)
 
 🧠 Aprendizados
-Criação de app mobile completo com React Native
+Organização de rotas com Expo Router
 
-Gerenciamento de estado local com AsyncStorage
+Criação de UI responsiva com Tailwind (NativeWind) e Gluestack
 
-Validações com Zod em formulários mobile
+Persistência local usando AsyncStorage
 
-Organização de componentes e navegação por stacks
+Formulários reativos e validados com React Hook Form e Zod
+
+Implementação de feedback visual com ícones, haptics e animações
 
 🏷️ Tags
-react-native typescript asyncstorage zod mobile expo  react-hook-form phosphor-icons
+react-native expo typescript expo-router nativewind tailwind gluestack asyncstorage zod react-hook-form jest mobile
+
+
