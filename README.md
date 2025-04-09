@@ -33,7 +33,7 @@ Certifique-se de ter o Expo Go instalado no celular ou um emulador Android/iOS c
 📌 Adicione aqui prints do app em funcionamento (se tiver).
 
 📌 Status
-🚧 Em desenvolvimento
+✅ Projeto concluído
 
 🧠 Aprendizados
 Criação de app mobile completo com React Native
@@ -45,4 +45,4 @@ Validações com Zod em formulários mobile
 Organização de componentes e navegação por stacks
 
 🏷️ Tags
-react-native typescript asyncstorage zod mobile expo styled-components react-hook-form phosphor-icons
+react-native typescript asyncstorage zod mobile expo  react-hook-form phosphor-icons
